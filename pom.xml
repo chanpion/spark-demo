@@ -12,6 +12,9 @@
         <module>spring-boot-spark</module>
         <module>spark-hbase-demo</module>
         <module>spark-hive-demo</module>
+        <module>spark-hdfs-demo</module>
+        <module>spark-maxcompute</module>
+        <module>spark-janusgraph</module>
     </modules>
 
     <properties>
@@ -21,7 +24,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <hadoop.version>3.1.1</hadoop.version>
-        <hbase.version>2.2.6</hbase.version>
+<!--        <hbase.version>2.2.6</hbase.version>-->
+        <hbase.version>2.1.5</hbase.version>
         <spark.version>2.4.8</spark.version>
     </properties>
 
@@ -75,6 +79,11 @@
                 <version>${hbase.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql_2.11</artifactId>
+                <version>${spark.version}</version>
+            </dependency>
             <dependency>
                 <groupId>org.apache.spark</groupId>
                 <artifactId>spark-hive_2.11</artifactId>

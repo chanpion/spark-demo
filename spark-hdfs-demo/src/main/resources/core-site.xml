@@ -1,0 +1,223 @@
+  <configuration>
+    
+    <property>
+      <name>fs.defaultFS</name>
+      <value>hdfs://ns60</value>
+      <final>true</final>
+    </property>
+    
+    <property>
+      <name>fs.trash.interval</name>
+      <value>360</value>
+      <final>true</final>
+    </property>
+    
+    <property>
+      <name>ha.failover-controller.active-standby-elector.zk.op.retries</name>
+      <value>120</value>
+    </property>
+    
+    <property>
+      <name>ha.zookeeper.acl</name>
+      <value>sasl:nn:rwcda</value>
+    </property>
+    
+    <property>
+      <name>ha.zookeeper.quorum</name>
+      <value>yuntu-d-010058012060.hz.td:2181,yuntu-d-010058012061.hz.td:2181,yuntu-d-010058012062.hz.td:2181</value>
+    </property>
+    
+    <property>
+      <name>hadoop.custom-extensions.root</name>
+      <value>/tdh/ext/2.7/hadoop</value>
+    </property>
+    
+    <property>
+      <name>hadoop.http.authentication.simple.anonymous.allowed</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.admin-cluster60.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.admin-cluster60.hosts</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.admin.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.admin.hosts</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.ambari-server-cluster60.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.ambari-server-cluster60.hosts</name>
+      <value>yuntu-d-010058012060.hz.td</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.beacon.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.beacon.hosts</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.beacon.users</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hcat.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hcat.hosts</name>
+      <value></value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hdfs.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hdfs.hosts</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hive.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.hive.hosts</name>
+      <value>yuntu-d-010058012061.hz.td</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.HTTP.groups</name>
+      <value>users</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.livy.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.livy.hosts</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.yarn.groups</name>
+      <value>*</value>
+    </property>
+    
+    <property>
+      <name>hadoop.proxyuser.yarn.hosts</name>
+      <value>yuntu-d-010058012061.hz.td,yuntu-d-010058012062.hz.td</value>
+    </property>
+    
+    <property>
+      <name>hadoop.security.auth_to_local</name>
+      <value>RULE:[1:$1@$0](admin-cluster60@yuntu.com)s/.*/admin/
+RULE:[1:$1@$0](ambari-qa-cluster60@yuntu.com)s/.*/ambari-qa/
+RULE:[1:$1@$0](hbase-cluster60@yuntu.com)s/.*/hbase/
+RULE:[1:$1@$0](hdfs-cluster60@yuntu.com)s/.*/hdfs/
+RULE:[1:$1@$0](.*@yuntu.com)s/@.*//
+RULE:[2:$1@$0](admin@yuntu.com)s/.*/admin/
+RULE:[2:$1@$0](amshbase@yuntu.com)s/.*/ams/
+RULE:[2:$1@$0](amszk@yuntu.com)s/.*/ams/
+RULE:[2:$1@$0](beacon@yuntu.com)s/.*/beacon/
+RULE:[2:$1@$0](dn@yuntu.com)s/.*/hdfs/
+RULE:[2:$1@$0](hbase@yuntu.com)s/.*/hbase/
+RULE:[2:$1@$0](hive@yuntu.com)s/.*/hive/
+RULE:[2:$1@$0](jhs@yuntu.com)s/.*/mapred/
+RULE:[2:$1@$0](jn@yuntu.com)s/.*/hdfs/
+RULE:[2:$1@$0](nm@yuntu.com)s/.*/yarn/
+RULE:[2:$1@$0](nn@yuntu.com)s/.*/hdfs/
+RULE:[2:$1@$0](rm@yuntu.com)s/.*/yarn/
+RULE:[2:$1@$0](yarn@yuntu.com)s/.*/yarn/
+DEFAULT</value>
+    </property>
+    
+    <property>
+      <name>hadoop.security.authentication</name>
+      <value>kerberos</value>
+    </property>
+    
+    <property>
+      <name>hadoop.security.authorization</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>io.compression.codecs</name>
+      <value>org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.SnappyCodec</value>
+    </property>
+    
+    <property>
+      <name>io.file.buffer.size</name>
+      <value>131072</value>
+    </property>
+    
+    <property>
+      <name>io.serializations</name>
+      <value>org.apache.hadoop.io.serializer.WritableSerialization</value>
+    </property>
+    
+    <property>
+      <name>ipc.client.connect.max.retries</name>
+      <value>50</value>
+    </property>
+    
+    <property>
+      <name>ipc.client.connection.maxidletime</name>
+      <value>30000</value>
+    </property>
+    
+    <property>
+      <name>ipc.client.fallback-to-simple-auth-allowed</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>ipc.client.idlethreshold</name>
+      <value>8000</value>
+    </property>
+    
+    <property>
+      <name>ipc.server.tcpnodelay</name>
+      <value>true</value>
+    </property>
+    
+    <property>
+      <name>mapreduce.jobtracker.webinterface.trusted</name>
+      <value>false</value>
+    </property>
+    
+    <property>
+      <name>net.topology.script.file.name</name>
+      <value>/etc/hadoop/conf/topology_script.py</value>
+    </property>
+    
+  </configuration>
