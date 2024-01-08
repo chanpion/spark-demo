@@ -15,6 +15,8 @@
         <module>spark-hdfs-demo</module>
         <module>spark-maxcompute</module>
         <module>spark-janusgraph</module>
+        <module>spark-dataframe</module>
+        <module>java-scala-spark</module>
     </modules>
 
     <properties>
@@ -24,8 +26,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <hadoop.version>3.1.1</hadoop.version>
-<!--        <hbase.version>2.2.6</hbase.version>-->
-        <hbase.version>2.1.5</hbase.version>
+        <hbase.version>2.2.7</hbase.version>
+<!--        <hbase.version>2.1.5</hbase.version>-->
         <spark.version>2.4.8</spark.version>
     </properties>
 
