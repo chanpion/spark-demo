@@ -1,4 +1,4 @@
-package cn.tongdun.yuntu.module.demo
+package com.chenpp.spark.hive
 
 import org.apache.spark.internal.Logging
 import org.apache.spark.sql.SparkSession

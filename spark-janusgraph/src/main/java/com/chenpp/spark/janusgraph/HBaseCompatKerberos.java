@@ -1,6 +1,8 @@
 package com.chenpp.spark.janusgraph;
 
 import cn.tongdun.yuntu.haina.client.util.YuntuKerberosUtil;
+import org.apache.commons.codec.binary.Hex;
+import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.hbase.HColumnDescriptor;
 import org.apache.hadoop.hbase.HTableDescriptor;
@@ -10,12 +12,17 @@ import org.apache.hadoop.hbase.client.ConnectionFactory;
 import org.apache.hadoop.hbase.client.Delete;
 import org.apache.hadoop.hbase.io.compress.Compression;
 import org.apache.hadoop.hbase.security.User;
+import org.janusgraph.diskstorage.configuration.ConfigElement;
 import org.janusgraph.diskstorage.hbase.ConnectionMask;
 import org.janusgraph.diskstorage.hbase.HBaseCompat;
 import org.janusgraph.diskstorage.hbase.HConnection1_0;
+import org.janusgraph.graphdb.configuration.GraphDatabaseConfiguration;
 import org.janusgraph.graphdb.database.idassigner.placement.SimpleBulkPlacementStrategy;
 
 import java.io.IOException;
+import java.lang.management.ManagementFactory;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 
 /**
  * @author April.Chen
@@ -49,6 +56,8 @@ public class HBaseCompatKerberos implements HBaseCompat {
         conf.set("keytab.file", "/Users/chenpp/tdh/hyperbase.keytab");
         conf.set("kerberos.principal", "hbase/tdh50");
         conf.set("cluster.max-partitions", "12");
+        conf.set(GraphDatabaseConfiguration.UNIQUE_INSTANCE_ID.toStringWithoutRoot(), generateInstanceId());
+
         conf.set(SimpleBulkPlacementStrategy.CONCURRENT_PARTITIONS.toStringWithoutRoot(), "12");
         User user = YuntuKerberosUtil.getAuthenticatedUser(krb5Path, keytabPath, principal, "kerberos", false);
         Connection conn = ConnectionFactory.createConnection(conf, user);
@@ -63,5 +72,21 @@ public class HBaseCompatKerberos implements HBaseCompat {
     @Override
     public void setTimestamp(Delete d, long timestamp) {
         d.setTimestamp(timestamp);
+    }
+
+
+    /**
+     * instanceId格式：${executor address}-${机器host}-${时间戳}-${线程id}
+     *
+     * @return
+     */
+    private String generateInstanceId() throws UnknownHostException {
+        String hostname = ManagementFactory.getRuntimeMXBean().getName();
+        String address = new String(Hex.encodeHex(InetAddress.getLocalHost().getAddress()));
+        String instanceId = String.format("%s-%s-%s-%s", address, hostname, System.currentTimeMillis(), Thread.currentThread().getId());
+        for (char c : ConfigElement.ILLEGAL_CHARS) {
+            instanceId = StringUtils.replaceChars(instanceId, c, '-');
+        }
+        return instanceId;
     }
 }

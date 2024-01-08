@@ -3,6 +3,7 @@ package com.chenpp.spark.hdfs;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.security.UserGroupInformation;
 
 import java.net.URI;
 
@@ -26,5 +27,6 @@ public class HdfsDemo {
         fileSystem.mkdirs(new Path("/Beijing"));
         //4、关闭连接
         fileSystem.close();
+        UserGroupInformation.reset();
     }
 }
